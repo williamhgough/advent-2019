@@ -7,10 +7,9 @@ def calculate_fuel_for_fuel(mass):
     total = x
     while True:
         x = calculate_fuel(x)
-        if x >= 0:
-            total += x
-        else:
+        if x < 0:
             break
+        total += x
     return total
 
 
