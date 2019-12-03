@@ -9,11 +9,12 @@
 ADDITION = 1
 MULTIPLICATION = 2
 STOP = 99
+GOAL = 19690720
 
 
-def calculate(intcode):
-    intcode[1] = 12
-    intcode[2] = 2
+def calculate(noun, verb, intcode):
+    intcode[1] = noun
+    intcode[2] = verb
     opCode, index = intcode[0], 0
 
     while opCode != STOP:
@@ -38,4 +39,9 @@ def calculate(intcode):
 
 with open("input.txt") as file:
     intcode = [int(x) for x in file.read().split(",")]
-    print(calculate(intcode[:]))
+    print(calculate(12, 2, intcode[:]))
+
+    for noun in range(100):
+        for verb in range(100):
+            if calculate(noun, verb, intcode[:]) == GOAL:
+                print(100 * noun + verb)
